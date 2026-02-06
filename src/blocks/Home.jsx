@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import App from '../App.jsx';
 import { MoveRight } from 'lucide-react';
 import HowItWorks from './HowItWorks.jsx';
+import Timeline from './Timeline.jsx';
 import Judges from './Judges.jsx';
 import FAQ from './faq.jsx';
 
@@ -112,6 +113,7 @@ function Home() {
                 </div>
             </section>
             <HowItWorks />
+            <Timeline />
             <div className='bg-[#000001]'>
             <Judges />
             <FAQ />

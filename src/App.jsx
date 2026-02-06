@@ -6,21 +6,37 @@ import Home from './blocks/Home'
 function App() {
 
   return (
-  <div className='hero h-[100vh] w-full text-white px-20 py-10 flex flex-row justify-between'>
-    <div className='h-[90vh] w-[50%] flex flex-col justify-end -mt-5'>
-      <h1 className='text-h1 font-semibold fade-in-up'>Hack O'Clock 2.0</h1>
-      <h3 className='text-h5 font-normal fade-in-delay-1'>Build. Innovate. Hack the Future.</h3>
-      <div className='flex flex-row gap-2 py-4 fade-in-delay-2'>
-        <a href="#" className='py-2 px-4 bg-white text-black font-semibold border border-[rgba(0,0,0,0.1)] hover:scale-105 transition-all duration-300 rounded-full'>Register Now</a>
-        <a href="#" className='py-2 px-4 bg-[rgba(255,255,255,0.2)] backdrop-blur-md font-semibold border border-[rgba(0,0,0,0.1)] hover:scale-105 transition-all duration-300 rounded-full'>Become a Sponsor</a>
-      </div>
+  <div className='hero h-[100vh] w-full text-white px-6 sm:px-12 lg:px-20 py-10 flex flex-col justify-between'>
+    <div className='flex justify-center'>
+      <nav className='flex gap-8 text-sm font-medium'>
+        <a href="#" className='hover:text-gray-300 transition-colors'>Home</a>
+        <a href="#" className='hover:text-gray-300 transition-colors'>About</a>
+        <a href="#" className='hover:text-gray-300 transition-colors'>Features</a>
+        <a href="#" className='hover:text-gray-300 transition-colors'>Signup</a>
+      </nav>
     </div>
-    <div className='h-[90vh] w-[50%] mt-48 flex items-end flex-col'>
-      <p className='text-right w-[80%] text-p bg-red-700/50 backdrop-blur-md px-4 py-2 rounded-lg text-gray-200 fade-in-delay-1'>A flagship 24-hour hackathon by Google Developer Groups (GDG) IILM University, bringing together top student developers, designers, and problem-solvers to build real-world, industry-relevant solutions.</p>
-      <p className='flex flex-col justify-center items-end font-medium text-right text-h6 mt-4 fade-in-delay-2'>
-      <span className='text-h2 font-semibold'>750+</span> &nbsp;
-      Tech-driven students. 24 hours. <br /> Unlimited innovation.
+    
+    <div className='flex flex-col justify-end pb-20'>
+      <p className='text-[#E10600] text-sm font-bold mb-4 tracking-wider fade-in-up'>GDG IILM</p>
+      <h1 className='text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 fade-in-delay-1'>HACK O' CLOCK</h1>
+      <div className='flex items-center gap-4 text-sm mb-8 fade-in-delay-2'>
+        <span>2025</span>
+        <span>•</span>
+        <span>Interactive Experience</span>
+        <span>•</span>
+        <span>Experimental</span>
+      </div>
+      <p className='max-w-xl text-base leading-relaxed mb-8 fade-in-delay-3'>
+        Explore an immersive scroll-paragraphd interactive experience. Discover dynamic animations, smooth transitions, and innovative design techniques that push the boundaries of web experiences.
       </p>
+      <div className='flex gap-4 fade-in-delay-4'>
+        <button className='px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors flex items-center gap-2'>
+          <span>▶</span> Play
+        </button>
+        <button className='px-6 py-3 bg-transparent border border-white font-semibold rounded hover:bg-white/10 transition-colors'>
+          More Info
+        </button>
+      </div>
     </div>
   </div>
 )
