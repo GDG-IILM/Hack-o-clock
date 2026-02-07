@@ -1,115 +1,132 @@
 import React from 'react';
+import { ClipboardList, Rocket, Code2, Bug, Trophy } from 'lucide-react';
 
 function Timeline() {
-    const phaseCards = [
-        '/timeline/planning-the-blueprint.svg',
-        '/timeline/infilration.svg',
-        '/timeline/execution.svg',
-        '/timeline/debugging.svg',
-        '/timeline/the-grand.svg',
+    const timelineData = [
+        {
+            phase: "Planning the Blueprint",
+            details: ["Registrations", "Team formation"],
+            icon: ClipboardList
+        },
+        {
+            phase: "Infiltration",
+            details: ["Coding begins", "Ideation"],
+            icon: Rocket
+        },
+        {
+            phase: "Execution",
+            details: ["Mid-point check", "Development"],
+            icon: Code2
+        },
+        {
+            phase: "Debugging",
+            details: ["Refinement", "Project submission"],
+            icon: Bug
+        },
+        {
+            phase: "The Grand Finale",
+            details: ["Winners announcement"],
+            icon: Trophy
+        }
     ];
 
     return (
-        <section className="relative py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-12 overflow-hidden" style={{
-            backgroundColor: '#3a3a3a',
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(60, 60, 60, 0.5) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(50, 50, 50, 0.5) 0%, transparent 50%)',
-        }}>
-            {/* Main Timeline Container */}
-            <div className="relative">
-                {/* Top Section - The Heist Board */}
-                <div className="relative mb-16 sm:mb-20 lg:mb-24">
-                    <div className="relative mx-auto max-w-[1200px]">
-                        {/* Corner Card - Top Left */}
-                        <div className="absolute -top-4 sm:-top-6 left-0 sm:left-4 lg:left-8 w-20 h-24 sm:w-24 sm:h-32 lg:w-32 lg:h-40 transform -rotate-6 z-20">
-                            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-red-700 rounded-full shadow-lg z-10 border border-red-900" />
-                            <img
-                                src="/timeline/planning-the-blueprint-down.svg"
-                                alt="Planning the Blueprint"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-
-                        {/* Corner Card - Top Right */}
-                        <div className="absolute -top-4 sm:-top-6 right-0 sm:right-4 lg:right-8 w-20 h-24 sm:w-24 sm:h-32 lg:w-32 lg:h-40 transform rotate-6 z-20">
-                            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-red-700 rounded-full shadow-lg z-10 border border-red-900" />
-                            <img
-                                src="/timeline/the-grand-raylag.svg"
-                                alt="The Grand Raylag"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-
-                        {/* Small Note Cards - Bottom Left */}
-                        <div className="absolute bottom-4 sm:bottom-8 -left-2 sm:left-0 lg:left-4 w-14 h-16 sm:w-20 sm:h-24 lg:w-24 lg:h-28 bg-[#e8e4d8] transform rotate-12 z-10 hidden sm:block">
-                            <div className="absolute -top-1.5 left-1/2 transform -translate-x-1/2 w-2.5 h-2.5" />
-                        </div>
-
-                        {/* Small Note Cards - Bottom Right */}
-                        <div className="absolute bottom-4 sm:bottom-8 -right-2 sm:right-0 lg:right-4 w-14 h-16 sm:w-20 sm:h-24 lg:w-24 lg:h-28 bg-[#e8e4d8] transform -rotate-12 z-10 hidden sm:block">
-                            <div className="absolute -top-1.5 left-1/2 transform -translate-x-1/2 w-2.5 h-2.5" />
-                        </div>
-
-                        {/* Main Center Board */}
-                        <div className="relative bg-[#e8e4d8] p-8 sm:p-12 lg:p-16 mx-2 sm:mx-8 lg:mx-20">
-                            {/* Top center pin */}
-                            <div className="absolute -top-3 sm:-top-3.5 left-1/2 transform -translate-x-1/2 w-3 h-3 sm:w-3.5 sm:h-3.5 bg-red-700 rounded-full shadow-lg z-30 border border-red-900" />
-
-                            {/* Center SVG */}
-                            <div className="relative">
-                                <img
-                                    src="/timeline/center.svg"
-                                    alt="The Grand Heist"
-                                    className="w-full h-auto relative z-10 scale-125"
-                                />
-                            </div>
-
-                            {/* Decorative coins scattered around - darker bronze/copper color */}
-                            <div className="absolute top-[15%] -left-3 sm:-left-5 lg:-left-7 w-8 h-8 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full shadow-xl border-2 hidden sm:block" style={{
-                                background: 'radial-gradient(circle at 30% 30%, #8B4513, #654321)',
-                                borderColor: '#3d2817'
-                            }} />
-                            <div className="absolute top-[30%] -right-2 sm:-right-4 lg:-right-6 w-6 h-6 sm:w-9 sm:h-9 lg:w-11 lg:h-11 rounded-full shadow-xl border-2 hidden sm:block" style={{
-                                background: 'radial-gradient(circle at 30% 30%, #8B4513, #654321)',
-                                borderColor: '#3d2817'
-                            }} />
-                            <div className="absolute bottom-[20%] -left-2 sm:-left-4 lg:-left-6 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full shadow-xl border-2 hidden sm:block" style={{
-                                background: 'radial-gradient(circle at 30% 30%, #8B4513, #654321)',
-                                borderColor: '#3d2817'
-                            }} />
-                            <div className="absolute top-[50%] -right-3 sm:-right-5 lg:-right-7 w-7 h-7 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full shadow-xl border-2 hidden lg:block" style={{
-                                background: 'radial-gradient(circle at 30% 30%, #8B4513, #654321)',
-                                borderColor: '#3d2817'
-                            }} />
-                            <div className="absolute bottom-[35%] -left-3 sm:-left-5 lg:-left-7 w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-full shadow-xl border-2 hidden lg:block" style={{
-                                background: 'radial-gradient(circle at 30% 30%, #8B4513, #654321)',
-                                borderColor: '#3d2817'
-                            }} />
-                        </div>
+        <section className="bg-[#F5F4F5] px-6 sm:px-10 lg:px-20 py-16 lg:py-24 overflow-hidden">
+            <div className="max-w-7xl mx-auto">
+                {/* Header */}
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-0 mb-12 lg:mb-20">
+                    <p className="font-bold text-[#E10600] uppercase text-p lg:w-[25%]">
+                        Timeline
+                    </p>
+                    <div className="w-full lg:w-[75%]">
+                        <h2 className="text-h3 font-semibold mb-4 text-black">
+                            The Journey Awaits
+                        </h2>
+                        <p className="text-p text-black/60">
+                            From registration to victory — here's how the hackathon unfolds, one phase at a time.
+                        </p>
                     </div>
                 </div>
 
-                {/* Phase Cards - Bottom Row - Using SVG Images Directly */}
-                <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-8 lg:px-12">
-                    {phaseCards.map((cardSrc, index) => (
-                        <div
-                            key={index}
-                            className="relative flex justify-center min-w-[200px] sm:min-w-[250px] lg:min-w-[280px] w-[45%] sm:w-[30%] lg:w-[18%]"
-                        >
-                            {/* Pin at top */}
-                            <div className="absolute -top-8 sm:-top-10 left-1/2 transform -translate-x-1/2 z-20">
-                                <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-gray-700 rounded-full shadow-lg border border-gray-900" />
-                            </div>
+                {/* Timeline */}
+                <div className="relative lg:w-[75%] lg:ml-auto">
+                    {/* Vertical line - hidden on mobile, visible on lg+ */}
+                    <div className="hidden lg:block absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#E10600] via-[#E10600]/50 to-transparent" />
 
-                            {/* Card Image - Direct SVG - Full width */}
-                            <div className="relative w-full">
-                                <img
-                                    src={cardSrc}
-                                    alt={`Phase ${index + 1}`}
-                                    className="w-full h-auto"
-                                />
-                            </div>
-                        </div>
-                    ))}
+                    {/* Timeline items */}
+                    <div className="flex flex-col gap-8 lg:gap-12">
+                        {timelineData.map((item, index) => {
+                            const IconComponent = item.icon;
+                            const isLast = index === timelineData.length - 1;
+
+                            return (
+                                <div
+                                    key={index}
+                                    className="relative flex flex-col lg:flex-row items-start gap-4 lg:gap-8 group"
+                                >
+                                    {/* Icon with pulse effect */}
+                                    <div className="relative z-10 flex-shrink-0">
+                                        <div
+                                            className={`
+                                                w-12 h-12 rounded-full flex items-center justify-center
+                                                border-2 border-[#E10600] shadow-lg
+                                                group-hover:bg-[#E10600] transition-all duration-300
+                                                ${isLast ? 'bg-[#E10600] animate-pulse-ring' : 'bg-white'}
+                                            `}
+                                            style={isLast ? {
+                                                animation: 'pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                                            } : {}}
+                                        >
+                                            <IconComponent
+                                                size={20}
+                                                className={`
+                                                    transition-colors duration-300
+                                                    ${isLast ? 'text-white' : 'text-[#E10600] group-hover:text-white'}
+                                                `}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {/* Content card */}
+                                    <div className={`
+                                        flex-1 p-6 rounded-2xl bg-white shadow-md
+                                        border border-transparent hover:border-[#E10600]/20
+                                        hover:shadow-xl transition-all duration-300
+                                        transform hover:-translate-y-1
+                                    `}>
+                                        {/* Phase number badge */}
+                                        <div className="flex items-center gap-3 mb-3">
+                                            <span className="text-xs font-bold uppercase tracking-wider text-white bg-[#E10600] px-2 py-1 rounded">
+                                                Phase {index + 1}
+                                            </span>
+                                        </div>
+
+                                        {/* Phase title */}
+                                        <h3 className="text-h5 font-semibold text-black mb-4">
+                                            {item.phase}
+                                        </h3>
+
+                                        {/* Details */}
+                                        <div className="flex flex-wrap gap-2">
+                                            {item.details.map((detail, detailIndex) => (
+                                                <span
+                                                    key={detailIndex}
+                                                    className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-black/5 text-black/70 hover:bg-[#E10600]/10 hover:text-[#E10600] transition-colors duration-200"
+                                                >
+                                                    {detail}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Connector line for mobile */}
+                                    {!isLast && (
+                                        <div className="lg:hidden absolute left-6 top-12 h-full w-0.5 bg-gradient-to-b from-[#E10600]/50 to-transparent -z-10" />
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>

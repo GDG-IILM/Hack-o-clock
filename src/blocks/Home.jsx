@@ -114,9 +114,10 @@ function Home() {
             </section>
             <HowItWorks />
             <Timeline />
+
             <div className='bg-[#000001]'>
-            <Judges />
-            <FAQ />
+                <Judges />
+                <FAQ />
             </div>
         </div>
     );
