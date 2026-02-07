@@ -2,10 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Compacta';
+  src: url('/font/CompactaBT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Compacta Unicode';
+  src: url('/font/unicode.compacta.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *{
     font-family: Inter;
     letter-spacing: -0.025em;
 }
+
+.hero-title {
+  font-family: 'Compacta', sans-serif;
+}
+
 /* reusable fade-in animation */
 .fade-in {
   opacity: 0;

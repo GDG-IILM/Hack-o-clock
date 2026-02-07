@@ -78,18 +78,18 @@ function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-[#E10600] mt-1 flex-shrink-0" />
-                <span className="text-p text-white/70">IILM College of Engineering and Technology, Greater Noida</span>
+                <span className="text-p text-white/70">Plot No.18, IILM College Of Engineering & Technology 16, Knowledge Park II, Greater Noida, Uttar Pradesh 201306</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-[#E10600] flex-shrink-0" />
-                <a href="mailto:hackoclock@iilm.edu" className="text-p text-white/70 hover:text-white transition-colors">
-                  hackoclock@iilm.edu
+                <a href="mailto:hackoclock2.0@gmail.com" className="text-p text-white/70 hover:text-white transition-colors">
+                  hackoclock2.0@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-[#E10600] flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-p text-white/70 hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+918538936858" className="text-p text-white/70 hover:text-white transition-colors">
+                  +91 85389 36858
                 </a>
               </li>
             </ul>
