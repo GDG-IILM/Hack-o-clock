@@ -100,7 +100,7 @@ function App() {
       </h1>
 
       {/* Building Image */}
-      <div className='w-full max-w-md sm:max-w-2xl fade-in-delay-1 relative z-20'>
+      <div className='w-full max-w-md sm:max-w-2xl lg:max-w-6xl xl:max-w-7xl fade-in-delay-1 relative z-20'>
         <img
           ref={buildingRef}
           src="/building.svg"

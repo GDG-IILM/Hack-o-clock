@@ -66,3 +66,34 @@ body{
     box-shadow: 0 0 0 12px rgba(225, 6, 0, 0);
   }
 }
+
+/* Marquee Animation */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 2rem;
+  animation: marquee 30s linear infinite;
+  width: fit-content;
+}
+
+.marquee-item {
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}

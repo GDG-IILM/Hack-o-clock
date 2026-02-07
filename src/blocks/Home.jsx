@@ -5,6 +5,7 @@ import HowItWorks from './HowItWorks.jsx';
 import Timeline from './Timeline.jsx';
 import Judges from './Judges.jsx';
 import FAQ from './faq.jsx';
+import Sponsors from './Sponsors.jsx';
 
 function Home() {
     const textRef = useRef(null);
@@ -47,6 +48,7 @@ function Home() {
 
             {/* ABOUT SECTION */}
             <section
+                id="about"
                 ref={containerRef}
                 className="flex flex-col lg:flex-row gap-10 lg:gap-0 px-6 sm:px-10 lg:px-20 py-10 justify-between lg:min-h-[80vh]"
             >
@@ -112,6 +114,7 @@ function Home() {
                     </div>
                 </div>
             </section>
+            <Sponsors />
             <HowItWorks />
             <Timeline />
 

@@ -19,7 +19,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-[#000001] text-white relative overflow-hidden">
+    <footer id="contact" className="bg-[#000001] text-white relative overflow-hidden">
       {/* Decorative gradient orb */}
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#E10600]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#E10600]/10 rounded-full blur-3xl pointer-events-none" />
