@@ -74,9 +74,6 @@ function JudgeCard({ img, name }) {
         <h2 className="text-h5 sm:text-h4 font-bold">
           {name}
         </h2>
-        <button className="text-xs sm:text-p opacity-90 hover:opacity-100">
-          Click to Read more
-        </button>
       </div>
     </div>
   )
