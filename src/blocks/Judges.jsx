@@ -1,8 +1,13 @@
 import React from 'react'
-import tokyo from '../assets/tokyo.png'
-import nairobi from '../assets/nairobi.png'
 
 function Judges() {
+  const judges = [
+    { name: 'Dhruv Narayan Raina', img: '/judges/Dhruv Narayan Raina.jpg.jpeg' },
+    { name: 'Pratham Batra', img: '/judges/Pratham Batra.jpg.jpeg' },
+    { name: 'Uday Sharma', img: '/judges/Uday Sharma.jpg.jpeg' },
+    { name: 'Utkarsh Soni', img: '/judges/Utkarsh Soni.png' },
+  ];
+
   return (
     <section
       className="
@@ -31,10 +36,9 @@ function Judges() {
           lg:grid lg:grid-cols-4 lg:gap-10
         "
       >
-        <JudgeCard img={tokyo} name="Tokyo" />
-        <JudgeCard img={nairobi} name="Nairobi" />
-        <JudgeCard img={tokyo} name="Tokyo" />
-        <JudgeCard img={tokyo} name="Tokyo" />
+        {judges.map((judge, index) => (
+          <JudgeCard key={index} img={judge.img} name={judge.name} />
+        ))}
       </div>
     </section>
   )

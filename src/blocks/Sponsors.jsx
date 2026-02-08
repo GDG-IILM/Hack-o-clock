@@ -1,14 +1,14 @@
 import React from 'react';
 
 function Sponsors() {
-    // Placeholder sponsor logos - replace with actual sponsor logos
     const sponsors = [
-        { name: 'Sponsor 1', logo: '/logo.png' },
-        { name: 'Sponsor 2', logo: '/logo.png' },
-        { name: 'Sponsor 3', logo: '/logo.png' },
-        { name: 'Sponsor 4', logo: '/logo.png' },
-        { name: 'Sponsor 5', logo: '/logo.png' },
-        { name: 'Sponsor 6', logo: '/logo.png' },
+        { name: 'CodeCrafters.io', logo: '/sponcers/CodeCrafters.io full logo (White text).png' },
+        { name: 'Devfolio', logo: '/sponcers/Devfolio - White.svg' },
+        { name: 'Hackshastra', logo: '/sponcers/hackshastra blue logo.png' },
+        { name: 'InterviewBuddy', logo: '/sponcers/interviewbuddy.svg' },
+        { name: 'Mobbin', logo: '/sponcers/mobbin-logo-wordmark_dark.svg' },
+        { name: 'TruScholar', logo: '/sponcers/truscholar.svg' },
+        { name: 'XYZ', logo: '/sponcers/xyz-logo-white.svg' },
     ];
 
     return (
@@ -27,12 +27,12 @@ function Sponsors() {
                         {sponsors.map((sponsor, index) => (
                             <div
                                 key={`sponsor-1-${index}`}
-                                className="marquee-item flex items-center justify-center bg-white rounded-lg p-6 shadow-sm border"
+                                className="marquee-item flex items-center justify-center bg-gray-700 rounded-lg p-6 shadow-sm border border-gray-600"
                             >
                                 <img
                                     src={sponsor.logo}
                                     alt={sponsor.name}
-                                    className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    className="h-16 w-auto object-contain hover:scale-110 transition-all duration-300"
                                 />
                             </div>
                         ))}
@@ -40,12 +40,12 @@ function Sponsors() {
                         {sponsors.map((sponsor, index) => (
                             <div
                                 key={`sponsor-2-${index}`}
-                                className="marquee-item flex items-center justify-center bg-white rounded-lg p-6 shadow-sm border"
+                                className="marquee-item flex items-center justify-center bg-gray-700 rounded-lg p-6 shadow-sm border border-gray-600"
                             >
                                 <img
                                     src={sponsor.logo}
                                     alt={sponsor.name}
-                                    className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                                    className="h-16 w-auto object-contain hover:scale-110 transition-all duration-300"
                                 />
                             </div>
                         ))}
