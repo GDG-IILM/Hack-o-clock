@@ -6,6 +6,7 @@ function Judges() {
     { name: 'Pratham Batra', img: '/judges/Pratham Batra.jpg.jpeg' },
     { name: 'Uday Sharma', img: '/judges/Uday Sharma.jpg.jpeg' },
     { name: 'Utkarsh Soni', img: '/judges/Utkarsh Soni.png' },
+    { name: 'Jai Chawla', img: '/judges/Jai Chawla.jpeg' },
   ];
 
   return (

@@ -112,6 +112,26 @@ function Home() {
                             <span className="font-semibold">3–4</span> student developers
                         </p>
                     </div>
+
+                    {/* Prize Pool */}
+                    <div className="mt-10 p-6 bg-gradient-to-br from-[#E10600] to-[#b00500] rounded-lg shadow-lg text-white">
+                        <h3 className="text-h5 font-bold mb-4">Prize Pool: ₹30,000 + Goodies</h3>
+                        <div className="flex flex-col sm:flex-row gap-4 text-h6">
+                            <div className="flex-1">
+                                <p className="font-semibold">🥇 1st Prize</p>
+                                <p className="text-h5 font-bold">₹15,000</p>
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-semibold">🥈 2nd Prize</p>
+                                <p className="text-h5 font-bold">₹10,000</p>
+                            </div>
+                            <div className="flex-1">
+                                <p className="font-semibold">🥉 3rd Prize</p>
+                                <p className="text-h5 font-bold">₹5,000</p>
+                            </div>
+                        </div>
+                        <p className="mt-4 text-p opacity-90">✨ Exciting goodies for winners</p>
+                    </div>
                 </div>
             </section>
             <Sponsors />
