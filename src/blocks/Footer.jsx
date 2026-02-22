@@ -12,10 +12,10 @@ function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/gdg_iilm' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/gdgiilm?originalSubdomain=in' },
     { name: 'Twitter', icon: Twitter, href: 'https://twitter.com' },
-    { name: 'GitHub', icon: Github, href: 'https://github.com' },
+    { name: 'GitHub', icon: Github, href:'https://github.com/GDG-IILM' },
   ];
 
   return (
@@ -130,7 +130,7 @@ function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-white/50">
+          <p className="text-xs text-white/80">
             © {currentYear} Hack O' Clock. All rights reserved.
           </p>
           <div className="flex gap-6">
