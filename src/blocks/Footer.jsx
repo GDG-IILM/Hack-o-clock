@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Mail, MapPin, Phone, Instagram, Linkedin, Twitter, Github, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -134,9 +136,9 @@ function Footer() {
             © {currentYear} Hack O' Clock. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-xs text-white/50 hover:text-white/80 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-xs text-white/50 hover:text-white/80 transition-colors">Terms of Service</a>
-            <a href="#" className="text-xs text-white/50 hover:text-white/80 transition-colors">Code of Conduct</a>
+            <Link to="/privacy" className="text-xs text-white/50 hover:text-white/80 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs text-white/50 hover:text-white/80 transition-colors">Terms of Service</Link>
+            <Link to="/conduct" className="text-xs text-white/50 hover:text-white/80 transition-colors">Code of Conduct</Link>
           </div>
         </div>
       </div>

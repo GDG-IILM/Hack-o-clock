@@ -17,13 +17,13 @@ function Navigation() {
 
                     {/* Navigation Links */}
                     <ul className='flex justify-center items-center gap-1 font-medium text-xs tracking-widest uppercase'>
-                        <a href="#about" className='hidden sm:block text-white/60 hover:text-red-500 hover:bg-white/5 py-2 px-4 rounded-full transition-all duration-300'>
+                        <a href="/about" className='hidden sm:block text-white/60 hover:text-red-500 hover:bg-white/5 py-2 px-4 rounded-full transition-all duration-300'>
                             About
                         </a>
                         <a href="#sponsors" className='hidden sm:block text-white/60 hover:text-red-500 hover:bg-white/5 py-2 px-4 rounded-full transition-all duration-300'>
                             Sponsors
                         </a>
-                        <a href="#contact" className='hidden sm:block text-white/60 hover:text-red-500 hover:bg-white/5 py-2 px-4 rounded-full transition-all duration-300'>
+                        <a href="/contact" className='hidden sm:block text-white/60 hover:text-red-500 hover:bg-white/5 py-2 px-4 rounded-full transition-all duration-300'>
                             Contact
                         </a>
                         

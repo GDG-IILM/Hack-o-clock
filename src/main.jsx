@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 import Layout from './Layout.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './blocks/Home.jsx'
+import Conduct from './blocks/Conduct.jsx'
+import Privacy from './blocks/Privacy.jsx'
+import Terms from './blocks/Terms.jsx'
+import About from './blocks/About.jsx'
 
 const router = createBrowserRouter([
   {
@@ -12,14 +15,28 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        index: true, // This is the default child route for the parent path "/"
+        index: true,
         element: <Home />,
+      },
+      {
+        path: 'conduct',
+        element: <Conduct />,
+      },
+      {
+        path: 'privacy',
+        element: <Privacy />,
+      },
+      {
+        path: 'terms',
+        element: <Terms />,
+      },
+      {
+        path: 'about',
+        element: <About />,
       },
     ]
   }
 ])
-
-
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
