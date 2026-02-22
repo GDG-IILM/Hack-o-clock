@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import App from '../App.jsx';
-import { MoveRight } from 'lucide-react';
+import { MoveRight, Terminal, Cpu, Users, ShieldAlert } from 'lucide-react';
 import HowItWorks from './HowItWorks.jsx';
 import Timeline from './Timeline.jsx';
 import Judges from './Judges.jsx';
@@ -8,72 +8,67 @@ import FAQ from './faq.jsx';
 import Sponsors from './Sponsors.jsx';
 
 function Home() {
-    const textRef = useRef(null);
     const containerRef = useRef(null);
     const [scrollProgress, setScrollProgress] = useState(0);
 
-    const text =
-        "Hack O'Clock 2.0 is a high-impact hackathon connecting academic learning with real-world tech challenges—bringing teams, mentors, judges, and sponsors together to build, innovate, and launch careers.";
-
+    const text = "Hack O'Clock 2.0 is a high-impact hackathon connecting academic learning with real-world tech challenges—bringing teams, mentors, judges, and sponsors together to build, innovate, and launch careers.";
     const words = text.split(' ');
 
     useEffect(() => {
         const handleScroll = () => {
             if (!containerRef.current) return;
-
             const rect = containerRef.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-
-            const start = rect.top - windowHeight + 200;
-            const end = rect.bottom - windowHeight / 2;
+            const start = rect.top - windowHeight + 100;
+            const end = rect.bottom - windowHeight / 1.5;
             const total = end - start;
             const current = -start;
-
             const progress = Math.max(0, Math.min(1, current / total));
             setScrollProgress(progress);
         };
 
         window.addEventListener('scroll', handleScroll);
         handleScroll();
-
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
-        <div data-nav-theme="light" className="bg-[#F5F4F5]">
+        <div className="bg-[#000000] text-white font-mono selection:bg-[#E10600] selection:text-white">
+            {/* CRT Scanline Overlay */}
+            <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.05] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+            
             <App />
 
-            {/* Spacer */}
-            <div className="h-[8vh] sm:h-[10vh]" />
+            {/* SPACER */}
+            <div className="h-[10vh]" />
 
             {/* ABOUT SECTION */}
             <section
                 id="about"
                 ref={containerRef}
-                className="flex flex-col lg:flex-row gap-10 lg:gap-0 px-6 sm:px-10 lg:px-20 py-10 justify-between lg:min-h-[80vh]"
+                className="relative flex flex-col lg:flex-row gap-12 px-6 sm:px-12 lg:px-24 py-24 border-y border-[#E10600]/30"
             >
-                {/* Left label */}
-                <p className="mt-6 lg:mt-16 font-bold text-[#E10600] uppercase text-p">
-                    about
-                </p>
+                {/* Side Label */}
+                <div className="lg:w-1/5">
+                    <div className="sticky top-28 flex items-center gap-2 text-[#E10600] text-sm font-bold tracking-[0.2em] uppercase">
+                        <span className="w-8 h-[1px] bg-[#E10600]"></span>
+                        System.About
+                    </div>
+                </div>
 
-                {/* Right content */}
-                <div className="w-full lg:w-[75%] flex flex-col">
-                    {/* Animated text */}
-                    <h1
-                        ref={textRef}
-                        className="mt-6 lg:mt-16 text-h4 sm:text-h3 font-semibold leading-relaxed"
-                    >
+                {/* Main Content */}
+                <div className="w-full lg:w-4/5">
+                    {/* Progressive Text Reveal */}
+                    <h1 className="text-3xl sm:text-5xl font-bold leading-[1.2] mb-16 tracking-tight">
                         {words.map((word, index) => {
                             const wordProgress = scrollProgress * words.length - index;
-                            const opacity = Math.max(0, Math.min(1, wordProgress));
-
+                            const opacity = Math.max(0.1, Math.min(1, wordProgress));
                             return (
                                 <span
                                     key={index}
                                     style={{
-                                        color: `rgba(0,0,0,${0.2 + 0.8 * opacity})`,
-                                        transition: 'color 0.1s ease-out',
+                                        color: opacity > 0.8 ? 'white' : `rgba(225, 6, 0, ${opacity})`,
+                                        transition: 'all 0.3s ease-out',
                                     }}
                                 >
                                     {word}{' '}
@@ -82,68 +77,70 @@ function Home() {
                         })}
                     </h1>
 
-                    {/* Event details */}
-                    <p className="mt-10 font-bold text-[#E10600] uppercase flex items-center gap-2 text-p">
-                        event details <MoveRight />
-                    </p>
-
-                    {/* Stats */}
-                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 mt-6">
-                        <p className="text-h6 font-medium p-5 border rounded-md shadow-sm w-full sm:w-auto">
-                            <span className="font-semibold text-[#E10600]">100+</span> Teams expected to
-                            <br /> participate in the Hackathon
-                        </p>
-
-                        <p className="text-h6 font-medium p-5 border rounded-md shadow-sm w-full sm:w-auto">
-                            <span className="font-semibold text-[#E10600]">80</span> Teams will qualify
-                            <br /> for the on-campus final round
-                        </p>
-
-                        <p className="text-h6 font-medium p-5 border rounded-md shadow-sm w-full sm:w-auto">
-                            <span className="font-semibold text-[#E10600]">60</span> Teams will stay
-                            overnight for the
-                            <br />
-                            <span className="font-semibold">24-Hour</span> Hackathon Experience
-                        </p>
-
-                        <p className="text-h6 font-medium p-5 border rounded-md shadow-sm w-full sm:w-auto">
-                            Each team will consist of
-                            <br />
-                            <span className="font-semibold">3–4</span> student developers
-                        </p>
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E10600]/20 border border-[#E10600]/20">
+                        <StatBox icon={<Users size={20}/>} title="100+ TEAMS" subtitle="EXPECTED ENROLLMENT" />
+                        <StatBox icon={<ShieldAlert size={20}/>} title="80 TEAMS" subtitle="QUALIFIED SHORTLIST" />
+                        <StatBox icon={<Terminal size={20}/>} title="24 HOURS" subtitle="NON-STOP CODING" />
+                        <StatBox icon={<Cpu size={20}/>} title="3-4 DEVS" subtitle="TEAM STRUCTURE" />
                     </div>
 
-                    {/* Prize Pool */}
-                    <div className="mt-10 p-6 bg-gradient-to-br from-[#E10600] to-[#b00500] rounded-lg shadow-lg text-white">
-                        <h3 className="text-h5 font-bold mb-4">Prize Pool: ₹30,000 + Goodies</h3>
-                        <div className="flex flex-col sm:flex-row gap-4 text-h6">
-                            <div className="flex-1">
-                                <p className="font-semibold">🥇 1st Prize</p>
-                                <p className="text-h5 font-bold">₹15,000</p>
+                    {/* Prize Section - Terminal Style */}
+                    <div className="mt-16 border border-[#E10600] bg-black">
+                        <div className="bg-[#E10600] text-black px-4 py-2 flex justify-between items-center font-black text-sm">
+                            <span className="flex items-center gap-2">
+                                <Terminal size={14}/> LOAD_PRIZE_MODULE.SH
+                            </span>
+                            <span>v2.0</span>
+                        </div>
+                        
+                        <div className="p-8 md:p-12 grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
+                            <div className="order-2 sm:order-1 opacity-70">
+                                <p className="text-[#E10600] text-xs mb-2">RUNNER_UP_01</p>
+                                <p className="text-3xl font-bold">₹10,000</p>
                             </div>
-                            <div className="flex-1">
-                                <p className="font-semibold">🥈 2nd Prize</p>
-                                <p className="text-h5 font-bold">₹10,000</p>
+                            <div className="order-1 sm:order-2 border-x-0 sm:border-x border-[#E10600]/30 px-4 scale-110">
+                                <p className="text-[#E10600] text-xs mb-2">GRAND_CHAMPION</p>
+                                <p className="text-5xl font-black drop-shadow-[0_0_10px_rgba(225,6,0,0.5)]">₹15,000</p>
                             </div>
-                            <div className="flex-1">
-                                <p className="font-semibold">🥉 3rd Prize</p>
-                                <p className="text-h5 font-bold">₹5,000</p>
+                            <div className="order-3 sm:order-3 opacity-70">
+                                <p className="text-[#E10600] text-xs mb-2">RUNNER_UP_02</p>
+                                <p className="text-3xl font-bold">₹5,000</p>
                             </div>
                         </div>
-                        <p className="mt-4 text-p opacity-90">✨ Exciting goodies for winners</p>
+
+                        <div className="bg-[#E10600]/5 p-4 border-t border-[#E10600]/20 text-center">
+                            <p className="text-xs text-[#E10600] animate-pulse">
+                                + EXCLUSIVE SWAG KITS & PARTNER PERKS FOR ALL FINALISTS
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
-            <Sponsors />
-            <HowItWorks />
-            <Timeline />
 
-            <div className='bg-[#000001]'>
-                <Judges />
-                <FAQ />
+            {/* SECTION WRAPPER */}
+            <div className="space-y-32 py-20">
+                <Sponsors />
+                <HowItWorks />
+                <Timeline />
+                <div className="bg-[#050505]">
+                    <Judges />
+                    <FAQ />
+                </div>
             </div>
         </div>
     );
 }
+
+// Refined Helper Component for Stats
+const StatBox = ({ icon, title, subtitle }) => (
+    <div className="bg-black p-8 group hover:bg-[#E10600]/5 transition-all duration-300 cursor-crosshair">
+        <div className="flex items-center gap-4 text-[#E10600] mb-3">
+            {icon}
+            <h3 className="text-xl font-bold tracking-tighter group-hover:translate-x-1 transition-transform">{title}</h3>
+        </div>
+        <p className="text-gray-500 text-xs tracking-[0.1em]">{subtitle}</p>
+    </div>
+);
 
 export default Home;

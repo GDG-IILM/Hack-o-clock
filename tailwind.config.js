@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-  "./index.html",
-  "./src/**/*.{js,ts,jsx,tsx}"
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
-        'inter': ['Inter', 'sans-serif']
+        // Bitcount as the primary sans font
+        sans: ['"Bitcount"', 'Inter', 'sans-serif'],
+        bitcount: ['"Bitcount"', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        compacta: ['"Compacta"', 'sans-serif'],
       },
       fontSize: {
         'h1': '2.986rem',
@@ -23,4 +24,3 @@ export default {
   },
   plugins: [],
 }
-

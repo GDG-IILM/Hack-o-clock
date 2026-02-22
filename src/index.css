@@ -1,43 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Bitcount:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&family=Bitcount:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap'); */
+
 @font-face {
   font-family: 'Compacta';
   src: url('/font/CompactaBT.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
-@font-face {
-  font-family: 'Compacta Unicode';
-  src: url('/font/unicode.compacta.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+:root {
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-*{
-    font-family: Inter;
-    letter-spacing: -0.025em;
+* {
+  font-family: ' bodoni, sans-serif';
+  letter-spacing: -0.01em;
 }
 
-.hero-title {
-  font-family: 'Compacta', sans-serif;
-}
-
-/* reusable fade-in animation */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
+/* The smooth word reveal animation */
+@keyframes wordIn {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
+    filter: blur(12px);
+    transform: translateY(15px) scale(0.98);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    filter: blur(0px);
+    transform: translateY(0) scale(1);
   }
+}
+
+.animate-word {
+  display: inline-block;
+  opacity: 0;
+}
+
+.animate-word.active {
+  animation: wordIn 0.8s var(--ease-premium) forwards;
+}
+
+/* Subtle scanline effect for that premium tech feel */
+.scanline-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.015) 51%);
+  background-size: 100% 4px;
+  pointer-events: none;
 }

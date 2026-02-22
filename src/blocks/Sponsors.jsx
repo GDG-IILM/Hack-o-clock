@@ -12,7 +12,7 @@ function Sponsors() {
     ];
 
     return (
-        <section id="sponsors" className="bg-[#F5F4F5] py-16 overflow-hidden">
+        <section id="sponsors" className="bg-black py-16 overflow-hidden">
             <div className="px-6 sm:px-10 lg:px-20">
                 <p className="font-bold text-[#E10600] uppercase text-p mb-8">
                     Our Sponsors

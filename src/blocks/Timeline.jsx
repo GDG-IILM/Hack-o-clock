@@ -1,136 +1,140 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ClipboardList, Rocket, Code2, Bug, Trophy, Terminal } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ClipboardList, Rocket, Code2, Bug, Trophy, Shield, Cpu, Activity } from 'lucide-react';
 
-// --- Hacker Typewriter Hook ---
-const HackerTypewriter = ({ text, start, speed = 40 }) => {
-  const [displayedText, setDisplayedText] = useState("");
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (start && index < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[index]);
-        setIndex(index + 1);
-      }, speed);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, text, start, speed]);
-
-  return <span className="font-mono">{displayedText}{index < text.length && start && <span className="animate-pulse">_</span>}</span>;
-};
+const timelineData = [
+  { phase: "Planning", details: "REGISTRATIONS // TEAM_FORMATION", icon: ClipboardList, code: "NODE_01", time: "09:00", status: "STABLE" },
+  { phase: "Infiltration", details: "CODING_BEGINS // IDEATION_PROTOCOL", icon: Rocket, code: "NODE_02", time: "11:00", status: "ACTIVE" },
+  { phase: "Execution", details: "MID_POINT_CHECK // SYSTEM_DEV", icon: Code2, code: "NODE_03", time: "22:00", status: "PENDING" },
+  { phase: "Debugging", details: "REFINEMENT // FINAL_SUBMISSION", icon: Bug, code: "NODE_04", time: "08:00", status: "ENCRYPTED" },
+  { phase: "Grand Finale", details: "WINNERS_ANNOUNCED // END_OF_LINE", icon: Trophy, code: "NODE_05", time: "12:00", status: "LOCKED" }
+];
 
 function Timeline() {
-  const timelineData = [
-    { phase: "Planning the Blueprint", details: "REGISTRATIONS // TEAM_FORMATION", icon: ClipboardList, code: "0x001" },
-    { phase: "Infiltration", details: "CODING_BEGINS // IDEATION_PROTOCOL", icon: Rocket, code: "0x002" },
-    { phase: "Execution", details: "MID_POINT_CHECK // SYSTEM_DEV", icon: Code2, code: "0x003" },
-    { phase: "Debugging", details: "REFINEMENT // FINAL_SUBMISSION", icon: Bug, code: "0x004" },
-    { phase: "The Grand Finale", details: "WINNERS_ANNOUNCED // END_OF_LINE", icon: Trophy, code: "0x005" }
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="bg-zinc-950 text-white px-6 sm:px-10 lg:px-20 py-24 relative overflow-hidden">
-      {/* Background Matrix/Binary Overlay */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none font-mono text-[10px] leading-none overflow-hidden break-all select-none">
-        {Array(20).fill("0101101001101010110100101101010110100101101").map((t, i) => <div key={i}>{t}</div>)}
-      </div>
+    <section className="bg-black text-white py-32 px-6 font-mono overflow-hidden relative min-h-screen flex items-center">
+      {/* Background: Digital Grid & Ambient Glow */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-900/10 blur-[120px] rounded-full" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header Section */}
-        <div className="flex flex-col lg:flex-row gap-8 mb-24 border-b border-white/10 pb-12">
-          <div className="lg:w-1/3">
-            <div className="flex items-center gap-2 text-[#E10600] font-mono text-sm tracking-[0.3em] mb-4">
-              <Terminal size={16} className="animate-pulse" />
-              <span>OP_TIMELINE_V1.0</span>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        {/* Top HUD Bar */}
+        <div className="flex justify-between items-end mb-20 border-b border-red-900/30 pb-6">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-red-600 text-[10px] font-black tracking-[0.4em]">
+              <Shield size={12} /> SYSTEM: GDG_IILM_OS_V2.6
             </div>
-            <h2 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none">
-              THE <span className="text-[#E10600]">MISSION</span> LOG
+            <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter uppercase leading-none">
+              MISSION <span className="text-red-600">LOG</span>
             </h2>
           </div>
-          <div className="lg:w-2/3 flex items-end">
-            <p className="text-gray-200 font-mono text-sm border-l-2 border-[#E10600] pl-6 max-w-xl">
-              &gt; Tracking the evolution from initial handshake to final deployment. 
-              Sequential execution of nodes is mandatory for system victory.
-            </p>
+          <div className="hidden md:block text-right">
+            <div className="text-[10px] text-zinc-500 uppercase tracking-widest">Active_Session_Node</div>
+            <div className="text-xl font-bold text-red-500 tabular-nums">0{activeIndex + 1} // 05</div>
           </div>
         </div>
 
-        {/* Timeline Grid */}
-        <div className="relative">
-          {/* Main Vertical Circuit Line */}
-          <div className="absolute left-[23px] lg:left-[50%] top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#E10600] via-white/20 to-transparent" />
-
-          <div className="space-y-24">
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          {/* Left: Tactical Selection Vertical List */}
+          <div className="lg:col-span-4 space-y-3">
             {timelineData.map((item, index) => (
-              <TimelineNode key={index} item={item} index={index} isLeft={index % 2 === 0} />
+              <motion.button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => setActiveIndex(index)}
+                className={`w-full relative group flex items-center justify-between p-4 border-l-2 transition-all duration-300 ${
+                  activeIndex === index 
+                    ? 'bg-gradient-to-r from-red-600/20 to-transparent border-red-600' 
+                    : 'border-zinc-800 hover:border-red-900/50'
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <span className={`text-xs font-black ${activeIndex === index ? 'text-red-500' : 'text-zinc-600'}`}>
+                    [{item.code}]
+                  </span>
+                  <span className={`text-lg font-bold uppercase ${activeIndex === index ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-300'}`}>
+                    {item.phase}
+                  </span>
+                </div>
+                {activeIndex === index && (
+                  <Activity size={16} className="text-red-600 animate-pulse" />
+                )}
+              </motion.button>
             ))}
           </div>
+
+          {/* Right: The Floating Command Interface */}
+          <div className="lg:col-span-8 perspective-1000">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, rotateY: 15, x: 50, filter: 'blur(10px)' }}
+                animate={{ opacity: 1, rotateY: 0, x: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, rotateY: -15, x: -50, filter: 'blur(10px)' }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="relative"
+              >
+                {/* Main Glass Card */}
+                <div className="bg-zinc-950/80 border-2 border-red-600/40 p-10 backdrop-blur-md shadow-[20px_20px_60px_rgba(220,38,38,0.1)] relative overflow-hidden">
+                  
+                  {/* Decorative Scanline */}
+                  <div className="absolute inset-0 bg-[linear-gradient(transparent_0%,rgba(220,38,38,0.05)_50%,transparent_100%)] bg-[length:100%_4px] animate-scan pointer-events-none" />
+
+                  {/* Top Details */}
+                  <div className="flex justify-between items-start mb-12">
+                    <div className="p-5 border-2 border-red-600 bg-red-600/10 text-red-600">
+                      {React.createElement(timelineData[activeIndex].icon, { size: 40 })}
+                    </div>
+                    <div className="text-right uppercase tracking-[0.2em] space-y-2">
+                      <div className="text-[10px] text-zinc-500">Node_Status</div>
+                      <div className="text-sm font-black text-red-500 animate-pulse">{timelineData[activeIndex].status}</div>
+                      <div className="text-[10px] text-zinc-500 pt-4">Timestamp</div>
+                      <div className="text-sm font-bold text-white italic">{timelineData[activeIndex].time} HRS</div>
+                    </div>
+                  </div>
+
+                  {/* Phase Title */}
+                  <h3 className="text-5xl font-black italic uppercase text-white mb-6 tracking-tighter">
+                    {timelineData[activeIndex].phase}
+                  </h3>
+
+                  {/* Terminal Output */}
+                  <div className="bg-black/50 border border-zinc-800 p-6 font-mono text-xs md:text-sm leading-relaxed text-zinc-400">
+                    <div className="flex items-center gap-2 mb-3 text-red-600/50 text-[10px]">
+                       <Cpu size={12} /> CORE_PROCESS_EXECUTING...
+                    </div>
+                    <p className="text-white mb-2"><span className="text-red-600 font-bold">$</span> RUN ./protocols/mission_init.sh</p>
+                    <p className="">&gt; {timelineData[activeIndex].details}</p>
+                    <p className="opacity-50 mt-2">&gt; Integrity: Verified_OK</p>
+                    <p className="opacity-50">&gt; Logs: Encrypted_AES_256</p>
+                  </div>
+
+                  {/* Static Corner Accents */}
+                  <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-red-600/20" />
+                  <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-red-600/20" />
+                </div>
+
+                {/* Floating Meta Boxes */}
+                <div className="absolute -bottom-6 -right-6 bg-red-600 text-black px-4 py-2 font-black italic text-sm tracking-widest shadow-xl">
+                  GDG_IILM_2026
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .perspective-1000 { perspective: 1000px; }
+        @keyframes scan {
+          from { background-position: 0 0; }
+          to { background-position: 0 100%; }
+        }
+        .animate-scan { animation: scan 10s linear infinite; }
+      `}</style>
     </section>
-  );
-}
-
-function TimelineNode({ item, index, isLeft }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const nodeRef = useRef(null);
-  const Icon = item.icon;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsVisible(true);
-    }, { threshold: 0.5 });
-    if (nodeRef.current) observer.observe(nodeRef.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div 
-      ref={nodeRef}
-      className={`relative flex items-center justify-between w-full group ${isLeft ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
-    >
-      {/* Content Card */}
-      <div className="w-full lg:w-[42%] ml-12 lg:ml-0">
-        <div className="relative p-6 bg-zinc-900/50 border border-white/10 rounded-lg backdrop-blur-md group-hover:border-[#E10600]/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(225,6,0,0.1)]">
-          
-          {/* Glitch Overlay for Number */}
-          <div className="absolute -top-4 left-4 bg-black px-2 font-mono text-[#E10600] text-xs tracking-tighter border border-[#E10600]/30 group-hover:animate-skew">
-             STATUS: {item.code}
-          </div>
-
-          <h3 className="text-xl md:text-2xl font-bold uppercase italic mb-2 group-hover:text-[#E10600] transition-colors">
-            {item.phase}
-          </h3>
-
-          <div className="text-gray-500 text-xs tracking-widest uppercase">
-            <HackerTypewriter text={item.details} start={isVisible} speed={25} />
-          </div>
-
-          {/* Decorative Corner Brackets */}
-          <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-[#E10600]" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-[#E10600]" />
-        </div>
-      </div>
-
-      {/* Central Node (The Dot) */}
-      <div className="absolute left-0 lg:left-1/2 transform -translate-x-1/2 flex items-center justify-center z-20">
-        <div className={`
-          w-12 h-12 rounded-full bg-black border-2 border-[#E10600] flex items-center justify-center
-          transition-all duration-700 ${isVisible ? 'scale-100 rotate-0' : 'scale-0 rotate-180'}
-          group-hover:shadow-[0_0_20px_#E10600] group-hover:bg-[#E10600]
-        `}>
-          <Icon className={`w-5 h-5 transition-colors ${isVisible ? 'text-[#E10600]' : 'text-white'} group-hover:text-black`} />
-        </div>
-        
-        {/* Animated Scanning Circle */}
-        {isVisible && (
-          <div className="absolute w-16 h-16 border border-[#E10600]/30 rounded-full animate-ping" />
-        )}
-      </div>
-
-      {/* Spacer for Desktop Grid */}
-      <div className="hidden lg:block lg:w-[42%]" />
-    </div>
   );
 }
 
